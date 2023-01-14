@@ -1,0 +1,51 @@
+Install and configute InfluxDB -
+
+sudo apt update
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.10_amd64.deb
+sudo dpkg -i influxdb_1.8.10_amd64.deb
+sudo service influxd status
+sudo service influxd start
+sudo service influxd status
+influx
+create database telegraf
+create user telegraf with password 'telegraf'
+exit
+
+---------------------------------------------------
+
+Install and configure Telegraf -
+
+wget -q https://repos.influxdata.com/influxdb.key
+echo '23a1c8836f0afc5ed24e0486339d7cc8f6790b83886c4c96995b88a061c5bb5d influxdb.key' | sha256sum -c && cat influxdb.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/influxdb.gpg > /dev/null
+echo 'deb [signed-by=/etc/apt/trusted.gpg.d/influxdb.gpg] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+sudo apt-get update && sudo apt-get install telegraf
+sudo service telegraf status
+
+---------------------------------------------------
+
+Install and configute Grafana -
+wget -q -O - https://packages.grafana.com/gpg.key | 
+sudo apt-key add -
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+sudo apt update
+sudo apt install grafana
+sudo service grafana-server status
+sudo service grafana-server start
+sudo service grafana-server status
+
+Note - Default credentials for grafana admin/adminDashboard - 
+5955
+---------------------------------------------------
+
+
+
+Docker installation
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt install docker-ce 
+
+
+-----------------------------------------------
