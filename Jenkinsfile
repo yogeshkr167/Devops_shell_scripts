@@ -9,7 +9,7 @@ pipeline {
 
     stage('Install apache2') {
       steps {
-        sh 'sudo apt install apache2'
+        sh 'apt install apache2'
       }
     }
 
