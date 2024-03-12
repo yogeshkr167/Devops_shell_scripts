@@ -9,8 +9,8 @@ pipeline {
 
     stage('Install apache2') {
       steps {
-        sh 'apt-cache update'
-        sh 'apt-cache install apache2'
+        sh 'apt-get update'
+        sh 'apt install apache2'
       }
     }
 
