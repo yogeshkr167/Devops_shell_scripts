@@ -7,13 +7,6 @@ pipeline {
       }
     }
 
-    stage('Install apache2') {
-      steps {
-        sh '''sudo apt update
-              sudo apt install apache2'''
-      }
-    }
-
     stage('Deploy') {
       steps {
         sh 'cp -R * /var/www/html/'
