@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Fetching from git') {
       steps {
-        git(url: 'https://github.com/yogeshkr167/Devops_shell_scripts.git', branch: 'main', poll: true)
+        git branch: 'main', url: 'https://github.com/yogeshkr167/Devops_shell_scripts.git'
       }
     }
 
